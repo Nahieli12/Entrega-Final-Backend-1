@@ -20,7 +20,7 @@ const cartSchema = new mongoose.Schema({
     }
 });
 
-// SOLUCIÓN DEFINITIVA AL ERROR "next is not a function"
+
 cartSchema.pre('findOne', function () {
     this.populate('products.product');
 });

@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-// 2. AGREGAR O ACTUALIZAR producto (ESTA ES LA RUTA QUE USARÁS EN POSTMAN)
+// 2. AGREGAR O ACTUALIZAR producto 
 router.put("/:cid/products/:pid", async (req, res) => {
     try {
         const { cid, pid } = req.params;

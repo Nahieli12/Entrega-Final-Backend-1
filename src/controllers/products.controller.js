@@ -3,7 +3,7 @@ import { throwHttpError } from "../utils/httpError.js";
 
 export const getAllProducts = async (req, res, next) => {
     try {
-        // 1. Extraemos los parámetros de la URL con valores por defecto
+        // 1.
         let { limit = 10, page = 1, sort, query } = req.query;
 
         // 2. Construcción del filtro (Objetivo: Filtros)
@@ -13,7 +13,7 @@ export const getAllProducts = async (req, res, next) => {
             filter = { $or: [ { category: query }, { status: query === 'true' } ] };
         }
 
-        // 3. Configuración de opciones (Objetivo: Paginación y Ordenamiento)
+        // 3. 
         const options = {
             limit: parseInt(limit),
             page: parseInt(page),
@@ -21,10 +21,10 @@ export const getAllProducts = async (req, res, next) => {
             lean: true
         };
 
-        // 4. Ejecución de la paginación
+        // 4. 
         const result = await Product.paginate(filter, options);
 
-        // 5. Formato de respuesta profesional (lo que suelen pedir en la consigna)
+        // 5. 
         res.status(200).json({
             status: "success",
             payload: result.docs,
@@ -46,7 +46,7 @@ export const getAllProducts = async (req, res, next) => {
 export const addProduct = async (req, res, next) => {
     try {
         const { title, price, stock, category, description } = req.body;
-        // Agregué category y description porque el modelo profesional los necesita para filtrar
+        
         if (!title || !price || !stock || !category) {
             return res.status(400).json({ status: "error", message: "Faltan campos obligatorios (incluyendo categoría)" });
         }

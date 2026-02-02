@@ -8,7 +8,7 @@ const productsRouter = express.Router();
 productsRouter.get("/", getAllProducts);
 
 // --- POST ---
-productsRouter.post("/", addProduct); // <--- AQUÍ ESTABA EL ERROR, faltaba cerrar bien esta llave y paréntesis
+productsRouter.post("/", addProduct); 
 
 // --- PUT ---
 productsRouter.put("/:pid", setProductById);
